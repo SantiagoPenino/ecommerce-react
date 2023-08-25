@@ -14,8 +14,8 @@ const ItemDetail = ({ item, isLoading }) => {
     <div className="d-flex container col-8 pt-5">
       <img src={item.image} alt={item.name} />
       <div className="card-body d-flex flex-column justify-content-around text-center">
-      <h1>{item.name}</h1>
-      <p className="text-danger fw-bold fs-1">${item.price}</p>
+      <h1 className="card-title">{item.name}</h1>
+      <p className="card-text text-danger fw-bold fs-1">${item.price}</p>
       </div>
     </div>
   );
