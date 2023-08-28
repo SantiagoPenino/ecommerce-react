@@ -4,14 +4,14 @@ const products = [
     name: 'TV SAMSUNG 32"',
     price: 237,
     category: "television",
-    image: "/src/assets/television/samsung-32.webp",
+    image: "../src/assets/television/samsung-32.webp",
   },
   {
     id: "2",
     name: 'TV LG 32"',
     price: 247,
     category: "television",
-    image: "/src/assets/television/lg-32.webp",
+    image: "../../src/assets/television/lg-32.webp",
   },
   {
     id: "3",
