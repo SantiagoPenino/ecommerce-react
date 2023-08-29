@@ -8,6 +8,7 @@ const ItemListContainer = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { categoryId } = useParams();
 
+  //HOOKS PARA MOSTRAR TODOS LOS PRODUCTOS SEGUN CATEGORIA
   useEffect(() => {
     setIsLoading(true);
     getProducts(categoryId).then((response) => {

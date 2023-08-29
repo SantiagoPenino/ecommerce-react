@@ -4,12 +4,15 @@ import { PacmanLoader } from "react-spinners";
 const ItemDetail = ({ item, isLoading }) => {
   if (isLoading) {
     return (
+//LOADER PARA CUANDO isLoading ES TRUE
       <div className="loader">
         <PacmanLoader color="#ffc107" size={50} />
       </div>
     );
   }
+//CONDICIONAL EN CASO DE QUE SE PONGA UNA ID INEXISTENTE EN LA BARRA DE DIRECCIONES
   if (!item) return <h2>Producto no encontrado</h2>;
+//DIV CON IMAGEN, NOMBRE Y PRECIO DEL PRODUCTO ELEGIDO
   return (
     <div className="d-flex container col-8 pt-5">
       <img src={item.image} alt={item.name} />

@@ -8,6 +8,7 @@ const ItemDetailContainer = () => {
   const [isLoading,setIsLoading] = useState(true);
   const {id} = useParams();
 
+  //HOOKS PARA OBTENER POR ID EL PRODUCTO SELECCIONADO
   useEffect(() => {
     getProduct(id).then((response) => {
       setItem(response);

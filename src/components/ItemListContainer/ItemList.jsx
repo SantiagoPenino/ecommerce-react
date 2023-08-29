@@ -11,6 +11,7 @@ const ItemList = ({ items, isLoading }) => {
     );
   }
   return (
+    //DIV QUE MUESTRA TODOS LOS PRODUCTOS DE UNA CATEGORIA
     <div className="container">
       <ul className="col-12 row justify-content-center">
         {items.map((item) => (

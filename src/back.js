@@ -1,3 +1,4 @@
+//ARRAY DE PRODUCTOS
 const products = [
   {
     id: "1",
@@ -168,7 +169,7 @@ const products = [
     image: "/src/assets/phone/motorola-g30.webp",
   },
 ];
-
+//FUNCION PARA OBTENER UN PRODUCTO POR ID
 export const getProduct = (id) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -178,6 +179,7 @@ export const getProduct = (id) => {
   });
 };
 
+//FUNCION PARA OBTENER TODOS LOS PRODUCTOS DE UNA CATEGORIA
 export const getProducts = (category) => {
   return new Promise((resolve) => {
     setTimeout(() => {
