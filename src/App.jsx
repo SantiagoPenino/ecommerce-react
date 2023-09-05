@@ -3,10 +3,12 @@ import NavBar from "./components/NavBar/NavBar";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import Cart from "./components/Cart/Cart";
+import {CartProvider} from "./context/CartContext";
 
 function App() {
   return (
     <>
+      <CartProvider>
       <NavBar />
       <Routes>
         <Route path="/cart" element={<Cart/>} />
@@ -14,6 +16,7 @@ function App() {
         <Route path="/category/:categoryId" element={<ItemListContainer />} />
         <Route path="/item/:id" element={<ItemDetailContainer />} />
       </Routes>
+      </CartProvider>
     </>
   );
 }

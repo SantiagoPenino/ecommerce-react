@@ -1,16 +1,17 @@
-import { useState } from 'react';
-import { Icon } from '@iconify/react';
-
-
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
+import { Link } from "react-router-dom";
+import { Icon } from "@iconify/react";
 
 const CartWidget = () => {
-    const [CartItems, setCartItems] = useState(0);
-    return(
-        <>
-        <Icon className='cart-icon display-6' icon="raphael:cart" />
-        {CartItems}
-        </>
-    )
-}
+  const { totalQuantity } = useContext(CartContext);
 
-export default CartWidget
+  return (
+    <Link to="/cart" style={{ display: totalQuantity > 0 ? "block" : "none" }}>
+      <Icon className="cart-icon display-6" icon="raphael:cart" />
+      {totalQuantity}
+    </Link>
+  );
+};
+
+export default CartWidget;

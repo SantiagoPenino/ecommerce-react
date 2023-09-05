@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useContext } from "react";
 import propTypes from "prop-types";
 import { PacmanLoader } from "react-spinners";
 import ItemCount from "../ItemCount/ItemCount";
 import { Link } from "react-router-dom";
+import { CartContext } from "../../context/CartContext";
 
 const ItemDetail = ({ item, isLoading }) => {
   if (isLoading) {
@@ -18,8 +20,11 @@ const ItemDetail = ({ item, isLoading }) => {
 
   const [quantityAdded, setQuantityAdded] = useState(0);
 
+  const { addItem } = useContext(CartContext);
   const handleOnAdd = (quantity) => {
     setQuantityAdded(quantity);
+
+    addItem(item, quantity);
   };
 
   //DIV CON IMAGEN, NOMBRE Y PRECIO DEL PRODUCTO ELEGIDO
@@ -35,11 +40,7 @@ const ItemDetail = ({ item, isLoading }) => {
             Terminar Compra
           </Link>
         ) : (
-          <ItemCount
-            initial={1}
-            stock={10}
-            onAdd={handleOnAdd}
-          />
+          <ItemCount initial={1} stock={10} onAdd={handleOnAdd} />
         )}
       </div>
     </div>
