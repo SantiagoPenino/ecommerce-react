@@ -5,6 +5,10 @@
   font-family: poppins, sans-serif;
 }
 
+.isActive{
+  font-weight: bold;
+}
+
 .loader{
   display: flex;
   justify-content: center;

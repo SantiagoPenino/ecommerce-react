@@ -23,7 +23,7 @@ const ItemDetail = ({ item, isLoading }) => {
   const { addItem } = useContext(CartContext);
   const handleOnAdd = (quantity) => {
     setQuantityAdded(quantity);
-    
+
     addItem(item, quantity);
   };
 
@@ -36,9 +36,10 @@ const ItemDetail = ({ item, isLoading }) => {
         <p className="card-text fw-bold">Descripcion de {item.name}</p>
         <p className="card-text text-danger fw-bold fs-1">${item.price}</p>
         {quantityAdded > 0 ? (
-          <><Link to="/cart" className="btn btn-warning">
-            Terminar Compra
-          </Link>
+          <>
+            <Link to="/cart" className="btn btn-warning">
+              Terminar Compra
+            </Link>
             <Link to="/" className="btn btn-warning">
               Seguir comprando
             </Link>
