@@ -10,8 +10,8 @@ const CartItem = (item) => {
     <img src={item.image} alt={item.name} className="cart-img img-fluid"/>
     <h3 className="card-title text-center">{item.name}</h3>
     <p className="card-text">${item.price}</p>
-    <p className="card-text">x{item.quantity}</p>
-    <button onClick={() => removeItem(item.id)} className="btn btn-danger rounded-circle pt-2">x</button>
+    <p className="card-text">Cantidad: {item.quantity}</p>
+    <button onClick={() => removeItem(item.id)} className="btn btn-danger cart-remove">x</button>
     </div>;
 };
 
