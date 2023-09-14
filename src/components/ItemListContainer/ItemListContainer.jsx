@@ -14,7 +14,9 @@ const ItemListContainer = () => {
     getProducts(categoryId).then((response) => {
       setItems(response);
       setIsLoading(false);
-    });
+    }).catch(() => {
+      console.error('algo salio mal')
+    })
   }, [categoryId]);
 
   return <ItemList items={items} isLoading={isLoading} />;

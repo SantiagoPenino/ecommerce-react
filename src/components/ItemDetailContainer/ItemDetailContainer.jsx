@@ -12,7 +12,7 @@ const ItemDetailContainer = () => {
   useEffect(() => {
     getProduct(id).then((response) => {
       setItem(response);
-    }).catch((error) => {
+    }).catch(()=>{
       setItem(null);
     }).finally(() => {
       setIsLoading(false);

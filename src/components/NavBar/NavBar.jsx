@@ -19,7 +19,7 @@ const NavBar = () => {
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink to="/category/phone" className="nav-link">
+          <NavLink to="/category/smartphone" className="nav-link">
             Celulares
           </NavLink>
         </li>

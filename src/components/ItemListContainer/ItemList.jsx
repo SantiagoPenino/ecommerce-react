@@ -20,9 +20,13 @@ const ItemList = ({ items, isLoading }) => {
               className="text-decoration-none text-dark"
               to={`/item/${item.id}`}
             >
-              <img src={item.image} alt={item.name} className="card-img-top" />
+              <img
+                src={`/public/img/${item.imageId}`}
+                alt={item.title}
+                className="card-img-top"
+              />
               <div className="card-body text-center">
-                <h3 className="card-title">{item.name}</h3>
+                <h3 className="card-title">{item.title}</h3>
                 <p className="card-text text-danger fw-bold fs-1">
                   ${item.price}
                 </p>
@@ -34,7 +38,6 @@ const ItemList = ({ items, isLoading }) => {
     </div>
   );
 };
-
 ItemList.propTypes = {
   items: propTypes.array.isRequired,
   isLoading: propTypes.bool,

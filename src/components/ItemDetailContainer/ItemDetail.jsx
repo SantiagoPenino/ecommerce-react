@@ -30,10 +30,10 @@ const ItemDetail = ({ item, isLoading }) => {
   //DIV CON IMAGEN, NOMBRE Y PRECIO DEL PRODUCTO ELEGIDO
   return (
     <div className="d-flex container col-8 pt-5">
-      <img src={item.image} alt={item.name} />
+      <img src={`/public/img/${item.imageId}`} alt={item.title} />
       <div className="card-body d-flex flex-column justify-content-around text-center align-items-center">
-        <h1 className="card-title">{item.name}</h1>
-        <p className="card-text fw-bold">Descripcion de {item.name}</p>
+        <h1 className="card-title">{item.title}</h1>
+        <p className="card-text fw-bold">Descripcion de {item.title}</p>
         <p className="card-text text-danger fw-bold fs-1">${item.price}</p>
         {quantityAdded > 0 ? (
           <>
@@ -45,7 +45,7 @@ const ItemDetail = ({ item, isLoading }) => {
             </Link>
           </>
         ) : (
-          <ItemCount initial={1} stock={10} onAdd={handleOnAdd} />
+          <ItemCount initial={1} stock={item.stock} onAdd={handleOnAdd} />
         )}
       </div>
     </div>
