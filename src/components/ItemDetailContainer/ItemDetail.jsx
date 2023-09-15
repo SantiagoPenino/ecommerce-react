@@ -6,7 +6,7 @@ import ItemCount from "../ItemCount/ItemCount";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 
-const ItemDetail = ({ item, isLoading }) => {
+const ItemDetail = ({ item, isLoading}) => {
   if (isLoading) {
     return (
       //LOADER PARA CUANDO isLoading ES TRUE
@@ -15,25 +15,30 @@ const ItemDetail = ({ item, isLoading }) => {
       </div>
     );
   }
-  //CONDICIONAL EN CASO DE QUE SE PONGA UNA ID INEXISTENTE EN LA BARRA DE DIRECCIONES
+  //TODO: MEJORAR ESTO
   if (!item) return <h2>Producto no encontrado</h2>;
 
   const [quantityAdded, setQuantityAdded] = useState(0);
+  const [newStock, setNewStock] = useState(item.stock);
 
   const { addItem } = useContext(CartContext);
   const handleOnAdd = (quantity) => {
     setQuantityAdded(quantity);
-
-    addItem(item, quantity);
+    addItem(item, quantity, newStock);
+    setNewStock(newStock-quantity)
   };
-
   //DIV CON IMAGEN, NOMBRE Y PRECIO DEL PRODUCTO ELEGIDO
   return (
     <div className="d-flex container col-8 pt-5">
-      <img src={`/img/${item.imageId}`} alt={item.title} />
+      <img src={`/${item.categoryId}/${item.imageId}`} alt={item.title} />
       <div className="card-body d-flex flex-column justify-content-around text-center align-items-center">
         <h1 className="card-title">{item.title}</h1>
         <p className="card-text fw-bold">Descripcion de {item.title}</p>
+        {newStock < 5 ? (
+          <p className="card-text">Apurate quedan {newStock} disponibles!</p>
+        ) : (
+          <p className="card-text">Quedan {newStock} disponibles</p>
+        )}
         <p className="card-text text-danger fw-bold fs-1">${item.price}</p>
         {quantityAdded > 0 ? (
           <>
@@ -45,7 +50,7 @@ const ItemDetail = ({ item, isLoading }) => {
             </Link>
           </>
         ) : (
-          <ItemCount initial={1} stock={item.stock} onAdd={handleOnAdd} />
+          <ItemCount initial={1} stock={newStock} onAdd={handleOnAdd} />
         )}
       </div>
     </div>

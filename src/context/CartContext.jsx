@@ -1,5 +1,4 @@
 import { createContext, useState } from "react";
-import ItemDetail from "../components/ItemDetailContainer/ItemDetail";
 
 export const CartContext = createContext({ cart: [] });
 

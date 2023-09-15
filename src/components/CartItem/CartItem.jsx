@@ -8,14 +8,13 @@ const CartItem = (item) => {
   return (
     <div className="container cart-card d-flex col-12 justify-content-around">
       <img
-        src={`/public/img/${item.imageId}`}
+        src={`/${item.categoryId}/${item.imageId}`}
         alt={item.title}
         className="cart-img img-fluid"
       />
       <h3 className="card-title text-center">{item.title}</h3>
       <p className="card-text">${item.price}</p>
-      <p className="card-text">Cantidad: {item.quantity}</p>
-      <p className="card-text">SubTotal: </p>
+      <p className="card-text">x {item.quantity}</p>
       <button
         onClick={() => removeItem(item.id)}
         className="btn btn-danger cart-remove"
