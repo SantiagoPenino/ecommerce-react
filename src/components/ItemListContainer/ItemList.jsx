@@ -21,7 +21,7 @@ const ItemList = ({ items, isLoading }) => {
               to={`/item/${item.id}`}
             >
               <img
-                src={`/public/img/${item.imageId}`}
+                src={`/img/${item.imageId}`}
                 alt={item.title}
                 className="card-img-top"
               />

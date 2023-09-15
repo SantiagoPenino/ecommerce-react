@@ -30,7 +30,7 @@ const ItemDetail = ({ item, isLoading }) => {
   //DIV CON IMAGEN, NOMBRE Y PRECIO DEL PRODUCTO ELEGIDO
   return (
     <div className="d-flex container col-8 pt-5">
-      <img src={`/public/img/${item.imageId}`} alt={item.title} />
+      <img src={`/img/${item.imageId}`} alt={item.title} />
       <div className="card-body d-flex flex-column justify-content-around text-center align-items-center">
         <h1 className="card-title">{item.title}</h1>
         <p className="card-text fw-bold">Descripcion de {item.title}</p>
