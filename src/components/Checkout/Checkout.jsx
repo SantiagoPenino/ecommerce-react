@@ -2,10 +2,16 @@ import { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 import { serverTimestamp } from "firebase/firestore";
 import { createOrder } from "../../back";
+import Field from "../Field/Field";
 
 const Checkout = () => {
   const { cart, total, clearCart } = useContext(CartContext);
   const [orderId, setOrderId] = useState(null);
+  const [formState, setFormState] = useState({
+    name: "",
+    phone: "",
+    email: "",
+  });
 
   const cartOrder = (cart) => {
     return cart.map((item) => ({
@@ -16,12 +22,17 @@ const Checkout = () => {
     }));
   };
 
+  const { name, phone, email } = formState;
+  const onChange = (e) => {
+    setFormState({ ...formState, [e.target.name]: e.target.value });
+  };
+
   const handleCheckout = () => {
     const order = {
       buyer: {
-        name: "John",
-        phone: "123",
-        email: "john@example.com",
+        name: formState.name,
+        phone: formState.phone,
+        email: formState.email,
       },
       items: cartOrder(cart),
       total,
@@ -33,6 +44,16 @@ const Checkout = () => {
     });
   };
 
+  const isFormValid = name && phone && email;
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (isFormValid) {
+      console.log(
+        `Your name is ${name}, your phone is ${phone}, and your email is ${email}`
+      );
+    }
+  };
+
   return (
     <div>
       <h1>Checkout</h1>
@@ -40,10 +61,6 @@ const Checkout = () => {
       {orderId && <p>El id de la order es: {orderId}</p>}
       {!orderId && (
         <>
-          <div>
-            <h4>Formulario de contacto</h4>
-            //TODO: Formulario de contacto
-          </div>
           <ul>
             {cart.map((item) => (
               <li key={item.id}>
@@ -55,7 +72,21 @@ const Checkout = () => {
             ))}
           </ul>
           <p>Total de la compra: ${total}</p>
-          <button onClick={handleCheckout}>Finalizar compra</button>
+          <div>
+            <h4>Ingresa tus datos para completar la compra.</h4>
+            <form className="form-control" onSubmit={onSubmit}>
+              <Field label="Nombre:" name="name" onChange={onChange} />
+              <Field label="Telefono:" name="phone" onChange={onChange} />
+              <Field label="Email:" name="email" onChange={onChange} />
+              <button
+                disabled={!isFormValid}
+                type="submit"
+                onClick={handleCheckout}
+              >
+                Finalizar compra
+              </button>
+            </form>
+          </div>
         </>
       )}
     </div>

@@ -7,13 +7,13 @@ import App from "./App.jsx";
 import "./index.css";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC568tgQdMOOZ1a4KtRj8hoc-EgCTGSdsc",
-  authDomain: "pacstore-react.firebaseapp.com",
-  projectId: "pacstore-react",
-  storageBucket: "pacstore-react.appspot.com",
-  messagingSenderId: "278933862886",
-  appId: "1:278933862886:web:803dc39cd7135af22abe27",
-  measurementId: "G-ELZSNDX348",
+  apiKey: import.meta.env.VITE_FIRESTORE_API_KEY,
+  authDomain: import.meta.env.VITE_FIRESTORE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIRESTORE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIRESTORE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIRESTORE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIRESTORE_APP_ID,
+  measurementId: import.meta.env.VITE_FIRESTORE_MEASUREMENT_ID,
 };
 
 initializeApp(firebaseConfig);
