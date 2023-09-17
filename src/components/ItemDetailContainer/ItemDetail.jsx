@@ -6,7 +6,7 @@ import ItemCount from "../ItemCount/ItemCount";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 
-const ItemDetail = ({ item, isLoading}) => {
+const ItemDetail = ({ item, isLoading }) => {
   if (isLoading) {
     return (
       //LOADER PARA CUANDO isLoading ES TRUE
@@ -24,8 +24,8 @@ const ItemDetail = ({ item, isLoading}) => {
   const { addItem } = useContext(CartContext);
   const handleOnAdd = (quantity) => {
     setQuantityAdded(quantity);
-    addItem(item, quantity, newStock);
-    setNewStock(newStock-quantity)
+    addItem(item, quantity);
+    setNewStock(newStock - quantity);
   };
   //DIV CON IMAGEN, NOMBRE Y PRECIO DEL PRODUCTO ELEGIDO
   return (

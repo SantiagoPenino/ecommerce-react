@@ -17,7 +17,10 @@ export const CartProvider = ({ children }) => {
     if (!isInCart(item.id)) {
       setCart((prev) => [...prev, { ...item, quantity }]);
     } else {
-      console.error("El producto ya ha sido agregado");
+      const itemIndex = cart.findIndex((cartItem) => cartItem.id === item.id);
+      const newCart = [...cart];
+      newCart[itemIndex].quantity += quantity;
+      setCart(newCart);
     }
   };
   const removeItem = (itemId) => {

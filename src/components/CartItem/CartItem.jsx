@@ -6,7 +6,7 @@ const CartItem = (item) => {
   const { removeItem } = useContext(CartContext);
 
   return (
-    <div className="container cart-card d-flex col-12 justify-content-around">
+    <div className="container cart-card d-flex col-12 justify-content-evenly form-control">
       <img
         src={`/${item.categoryId}/${item.imageId}`}
         alt={item.title}

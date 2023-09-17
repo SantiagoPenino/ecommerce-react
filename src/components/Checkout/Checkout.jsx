@@ -3,6 +3,7 @@ import { CartContext } from "../../context/CartContext";
 import { serverTimestamp } from "firebase/firestore";
 import { createOrder } from "../../back";
 import Field from "../Field/Field";
+import { doc, getFirestore, updateDoc } from "firebase/firestore";
 
 const Checkout = () => {
   const { cart, total, clearCart } = useContext(CartContext);
@@ -20,6 +21,14 @@ const Checkout = () => {
       price: item.price,
       title: item.title,
     }));
+  };
+
+  const updateStock = (cart) => {
+    const db = getFirestore();
+    cart.forEach((item) => {
+      const stockDoc = doc(db, "items", item.id);
+      updateDoc(stockDoc, { stock: item.stock - item.quantity });
+    });
   };
 
   const { name, phone, email } = formState;
@@ -40,6 +49,7 @@ const Checkout = () => {
     };
     createOrder(order).then((docRef) => {
       setOrderId(docRef.id);
+      updateStock(cart);
       clearCart();
     });
   };
@@ -55,7 +65,7 @@ const Checkout = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       <h1>Checkout</h1>
       <h2>Resumen de la compra</h2>
       {orderId && <p>El id de la order es: {orderId}</p>}
