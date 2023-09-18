@@ -6,6 +6,7 @@ const NavBar = () => {
     <nav className="navbar navbar-expand-lg bg-warning d-flex justify-content-around sticky-top">
       <Link to="/" className="navbar-brand fw-bold">
         Pac-Store
+        <img className="h-25 w-25" src="/berry.svg"></img>
       </Link>
       <ul className="navbar-nav">
         <li className="nav-item">

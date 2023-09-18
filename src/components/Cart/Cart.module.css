@@ -6,7 +6,7 @@
     gap: .5rem;
 }
 
-.total {
+.cart_total {
     padding: 2rem;
     text-align: center;
     font-weight: bold;
@@ -24,6 +24,4 @@
 .empty_cart_title {
     font-weight: bold;
     padding: 5rem;
-
-
 }

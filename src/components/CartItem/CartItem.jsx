@@ -1,25 +1,25 @@
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
-import "./CartItem.css";
+import styles from "./CartItem.module.css";
 
 const CartItem = (item) => {
   const { removeItem } = useContext(CartContext);
 
   return (
-    <div className="container cart-card d-flex col-12 justify-content-evenly form-control">
+    <div className={`container col-12 form-control ${styles.cart_card}`}>
       <img
         src={`/${item.categoryId}/${item.imageId}`}
         alt={item.title}
-        className="cart-img img-fluid"
+        className={`img-fluid ${styles.cart_img}`}
       />
-      <h3 className="card-title text-center">{item.title}</h3>
-      <p className="card-text">${item.price}</p>
-      <p className="card-text">x {item.quantity}</p>
+      <h3 className={styles.cart_details}>{item.title}</h3>
+      <p className={styles.cart_details}>${item.price}</p>
+      <p className={styles.cart_details}>x {item.quantity}</p>
       <button
         onClick={() => removeItem(item.id)}
-        className="btn btn-danger cart-remove"
+        className={`btn btn-danger ${styles.cart_remove}`}
       >
-        x
+        &times;
       </button>
     </div>
   );

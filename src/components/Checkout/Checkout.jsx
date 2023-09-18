@@ -4,6 +4,7 @@ import { serverTimestamp } from "firebase/firestore";
 import { createOrder } from "../../back";
 import Field from "../Field/Field";
 import { doc, getFirestore, updateDoc } from "firebase/firestore";
+import styles from "./Checkout.module.css";
 
 const Checkout = () => {
   const { cart, total, clearCart } = useContext(CartContext);
@@ -58,37 +59,51 @@ const Checkout = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (isFormValid) {
-      console.log(
-        `Your name is ${name}, your phone is ${phone}, and your email is ${email}`
-      );
+      console.log("Datos enviados correctamente");
     }
   };
 
   return (
-    <div className="container">
-      <h1>Checkout</h1>
-      <h2>Resumen de la compra</h2>
-      {orderId && <p>El id de la order es: {orderId}</p>}
+    <div className={`container ${styles.checkout_body}`}>
+      {orderId && (
+        <div className="container p-5">
+          <p className={styles.checkout_congrats}>
+            Gracias por tu compra {name}, el id de la orden es:
+            <br />
+            <span className={styles.checkout_order}>{orderId}</span>
+          </p>
+        </div>
+      )}
       {!orderId && (
         <>
-          <ul>
+          <h2 className={styles.checkout_title}>Resumen de la compra</h2>
+          <ul className={styles.checkout_list}>
             {cart.map((item) => (
-              <li key={item.id}>
-                <p>{item.title}</p>
-                <p>Cantidad: {item.quantity}</p>
-                <p>Precio unitario: {item.price}</p>
-                <p>Subtotal: ${item.price * item.quantity}</p>
-              </li>
+              <>
+                <li className={styles.checkout_items} key={item.id}>
+                  <p>{item.title}</p>
+                  <p>Cantidad: {item.quantity}</p>
+                  <p>Precio unitario: ${item.price}</p>
+                  <p>Subtotal: ${item.price * item.quantity}</p>
+                </li>
+                <hr />
+              </>
             ))}
           </ul>
-          <p>Total de la compra: ${total}</p>
+          <p className={styles.checkout_total}>Total de la compra: ${total}</p>
           <div>
-            <h4>Ingresa tus datos para completar la compra.</h4>
-            <form className="form-control" onSubmit={onSubmit}>
+            <h4 className={styles.form_title}>
+              Ingresa tus datos para completar la compra.
+            </h4>
+            <form
+              className={`form-control ${styles.checkout_form}`}
+              onSubmit={onSubmit}
+            >
               <Field label="Nombre:" name="name" onChange={onChange} />
               <Field label="Telefono:" name="phone" onChange={onChange} />
               <Field label="Email:" name="email" onChange={onChange} />
               <button
+                className={`btn btn-danger ${styles.form_button}`}
                 disabled={!isFormValid}
                 type="submit"
                 onClick={handleCheckout}

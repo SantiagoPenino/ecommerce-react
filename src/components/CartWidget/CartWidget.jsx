@@ -6,9 +6,16 @@ import { Icon } from "@iconify/react";
 const CartWidget = () => {
   const { totalQuantity } = useContext(CartContext);
   return (
-    <Link to="/cart" style={{ display: totalQuantity > 0 ? "block" : "none" }}>
-      <Icon className="cart-icon display-6" icon="raphael:cart" />
-      <span className="badge rounded-pill bg-danger">{totalQuantity}</span>
+    <Link to="/cart">
+      <button className="btn btn-warning">
+        <Icon className="cart-icon display-6" icon="raphael:cart" />
+        <span
+          style={{ visibility: totalQuantity > 0 ? "visible" : "hidden" }}
+          className="badge rounded-pill bg-danger fs-6"
+        >
+          {totalQuantity}
+        </span>
+      </button>
     </Link>
   );
 };
