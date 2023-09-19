@@ -9,7 +9,9 @@ const Cart = () => {
   if (totalQuantity === 0) {
     return (
       <div className={`container ${styles.cart_body}`}>
-        <h1 className={styles.empty_cart_title}>Ups! el carrito de compras esta vacio.</h1>
+        <h1 className={styles.empty_cart_title}>
+          Ups! el carrito de compras esta vacio.
+        </h1>
         <Link to="/" className="btn btn-warning">
           Ir al Inicio
         </Link>

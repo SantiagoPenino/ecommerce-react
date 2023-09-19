@@ -6,11 +6,11 @@ import ItemCount from "../ItemCount/ItemCount";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 import styles from "./ItemDetail.module.css";
+import { motion } from "framer-motion";
 
 const ItemDetail = ({ item, isLoading }) => {
   if (isLoading) {
     return (
-      //LOADER PARA CUANDO isLoading ES TRUE
       <div className="loader">
         <PacmanLoader color="#ffc107" size={50} />
       </div>
@@ -32,19 +32,25 @@ const ItemDetail = ({ item, isLoading }) => {
     addItem(item, quantity);
   };
 
-  //DIV CON IMAGEN, NOMBRE Y PRECIO DEL PRODUCTO ELEGIDO
   return (
     <div className={`container col-8 ${styles.item_detail_body}`}>
-      <div className={styles.product_image}>
+      <motion.div
+        className={styles.product_image}
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ type: "spring", stiffness: 100}}
+      >
         <img src={`/${item.categoryId}/${item.imageId}`} alt={item.title} />
-      </div>
+      </motion.div>
       <div className={`card-body ${styles.product_details}`}>
         <h1 className="card-title">{item.title}</h1>
         <p className="card-text fw-bold">Descripcion de {item.title}</p>
         {item.stock === 0 ? (
           <p className={`card-text ${styles.no_stock}`}>Sin stock!</p>
         ) : (
-          <p className={`card-text ${styles.stocked}`}>En stock</p>
+          <p className={`card-text ${styles.stocked}`}>
+            En stock ({item.stock} disponibles)
+          </p>
         )}
         <p className="card-text text-danger fw-bold fs-1">${item.price}</p>
       </div>

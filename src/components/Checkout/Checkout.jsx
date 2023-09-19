@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, Fragment } from "react";
 import { CartContext } from "../../context/CartContext";
 import { serverTimestamp } from "firebase/firestore";
 import { createOrder } from "../../back";
@@ -58,9 +58,6 @@ const Checkout = () => {
   const isFormValid = name && phone && email;
   const onSubmit = (e) => {
     e.preventDefault();
-    if (isFormValid) {
-      console.log("Datos enviados correctamente");
-    }
   };
 
   return (
@@ -79,15 +76,15 @@ const Checkout = () => {
           <h2 className={styles.checkout_title}>Resumen de la compra</h2>
           <ul className={styles.checkout_list}>
             {cart.map((item) => (
-              <>
-                <li className={styles.checkout_items} key={item.id}>
+              <Fragment key={item.id}>
+                <li className={styles.checkout_items} >
                   <p>{item.title}</p>
                   <p>Cantidad: {item.quantity}</p>
                   <p>Precio unitario: ${item.price}</p>
                   <p>Subtotal: ${item.price * item.quantity}</p>
                 </li>
                 <hr />
-              </>
+              </Fragment>
             ))}
           </ul>
           <p className={styles.checkout_total}>Total de la compra: ${total}</p>
