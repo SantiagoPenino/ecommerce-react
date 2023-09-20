@@ -55,11 +55,11 @@ const ItemDetail = ({ item, isLoading }) => {
         <p className="card-text text-danger fw-bold fs-1">${item.price}</p>
       </div>
       {quantityAdded > 0 ? (
-        <div className={styles.product_buttons}>
+        <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:.5}} className={styles.product_buttons}>
           <Link to="/cart" className="btn btn-warning">
             Ir al Carrito
           </Link>
-        </div>
+        </motion.div>
       ) : (
         <div className={styles.product_buttons}>
           <ItemCount initial={1} stock={item.stock} onAdd={handleOnAdd} />

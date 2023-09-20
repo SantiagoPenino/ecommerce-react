@@ -1,13 +1,16 @@
 import CartWidget from "../CartWidget/CartWidget";
 import { Link, NavLink } from "react-router-dom";
 import styles from "./NavBar.module.css";
+import { motion } from "framer-motion";
 
 const NavBar = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-warning d-flex justify-content-around sticky-top">
       <Link to="/" className="navbar-brand fw-bold">
-        Pac-Store
-        <img className={styles.nav_logo} src="/berry.svg"></img>
+        <motion.div animate={{ scale: [null, 1.2, 1] }}>
+          Pac-Store
+          <img className={styles.nav_logo} src="/berry.svg"></img>
+        </motion.div>
       </Link>
       <ul className="navbar-nav">
         <li className={styles.nav_item}>
