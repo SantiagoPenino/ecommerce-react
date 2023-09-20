@@ -77,7 +77,7 @@ const Checkout = () => {
           <ul className={styles.checkout_list}>
             {cart.map((item) => (
               <Fragment key={item.id}>
-                <li className={styles.checkout_items} >
+                <li className={styles.checkout_items}>
                   <p>{item.title}</p>
                   <p>Cantidad: {item.quantity}</p>
                   <p>Precio unitario: ${item.price}</p>
@@ -96,11 +96,11 @@ const Checkout = () => {
               className={`form-control ${styles.checkout_form}`}
               onSubmit={onSubmit}
             >
-              <Field label="Nombre:" name="name" onChange={onChange} />
-              <Field label="Telefono:" name="phone" onChange={onChange} />
-              <Field label="Email:" name="email" onChange={onChange} />
+              <Field label="Nombre " name="name" onChange={onChange} />
+              <Field label="Telefono " name="phone" onChange={onChange} />
+              <Field label="Email " name="email" onChange={onChange} />
               <button
-                className={`btn btn-danger ${styles.form_button}`}
+                className={`btn mt-4 btn-danger ${styles.form_button}`}
                 disabled={!isFormValid}
                 type="submit"
                 onClick={handleCheckout}

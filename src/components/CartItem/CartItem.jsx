@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import styles from "./CartItem.module.css";
+import { motion } from "framer-motion";
 
 const CartItem = (item) => {
   const { removeItem } = useContext(CartContext);
@@ -15,12 +16,13 @@ const CartItem = (item) => {
       <h3 className={styles.cart_details}>{item.title}</h3>
       <p className={styles.cart_details}>${item.price}</p>
       <p className={styles.cart_details}>x {item.quantity}</p>
-      <button
+      <motion.button
+      whileHover={{scale:1.1}}
         onClick={() => removeItem(item.id)}
         className={`btn btn-danger ${styles.cart_remove}`}
       >
         &times;
-      </button>
+      </motion.button>
     </div>
   );
 };

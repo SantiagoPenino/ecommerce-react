@@ -21,14 +21,12 @@ const ItemList = ({ items, isLoading }) => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               whileHover={{ scale: 1.1 }}
-              
             >
               <Link
                 className="text-decoration-none text-dark"
                 to={`/item/${item.id}`}
               >
                 <motion.img
-                
                   src={`/${item.categoryId}/${item.imageId}`}
                   alt={item.title}
                   className={styles.list_image}

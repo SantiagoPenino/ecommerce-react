@@ -38,7 +38,7 @@ const ItemDetail = ({ item, isLoading }) => {
         className={styles.product_image}
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
-        transition={{ type: "spring", stiffness: 100}}
+        transition={{ type: "spring", duration:.5}}
       >
         <img src={`/${item.categoryId}/${item.imageId}`} alt={item.title} />
       </motion.div>

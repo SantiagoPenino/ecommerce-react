@@ -1,5 +1,6 @@
 import { useState } from "react";
 import propTypes from "prop-types";
+import {motion} from 'framer-motion'
 
 const ItemCount = ({ initial, onAdd, stock }) => {
   const [quantity, setQuantity] = useState(initial);
@@ -19,13 +20,13 @@ const ItemCount = ({ initial, onAdd, stock }) => {
   return (
     <div className="">
       <div className="d-flex justify-content-between">
-        <button className="btn btn-warning" onClick={decrement}>
+        <motion.button whileTap={{scale:.95}} className="btn btn-warning" onClick={decrement}>
           -
-        </button>
+        </motion.button>
         <h4 className="number">{quantity}</h4>
-        <button className="btn btn-warning" onClick={increment}>
+        <motion.button whileTap={{scale:.95}} className="btn btn-warning" onClick={increment}>
           +
-        </button>
+        </motion.button>
       </div>
       <hr />
       <div>
