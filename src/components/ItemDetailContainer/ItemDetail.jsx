@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 import styles from "./ItemDetail.module.css";
 import { motion } from "framer-motion";
+import { notify } from "../../utils";
 
 const ItemDetail = ({ item, isLoading }) => {
   if (isLoading) {
@@ -30,6 +31,7 @@ const ItemDetail = ({ item, isLoading }) => {
   const handleOnAdd = (quantity) => {
     setQuantityAdded(quantity);
     addItem(item, quantity);
+    notify();
   };
 
   return (
@@ -38,7 +40,7 @@ const ItemDetail = ({ item, isLoading }) => {
         className={styles.product_image}
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
-        transition={{ type: "spring", duration:.5}}
+        transition={{ type: "spring", duration: 0.5 }}
       >
         <img src={`/${item.categoryId}/${item.imageId}`} alt={item.title} />
       </motion.div>
@@ -55,7 +57,12 @@ const ItemDetail = ({ item, isLoading }) => {
         <p className="card-text text-danger fw-bold fs-1">${item.price}</p>
       </div>
       {quantityAdded > 0 ? (
-        <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:.5}} className={styles.product_buttons}>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className={styles.product_buttons}
+        >
           <Link to="/cart" className="btn btn-warning">
             Ir al Carrito
           </Link>

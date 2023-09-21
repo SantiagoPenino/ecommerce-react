@@ -3,6 +3,8 @@
 * {
   box-sizing: border-box;
   font-family: poppins, sans-serif;
+  --toastify-color-success: #dc3545;
+  --toastify-font-family: poppins, sans-serif;
 }
 .loader {
   display: flex;
