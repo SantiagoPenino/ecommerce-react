@@ -7,7 +7,7 @@ const CartItem = (item) => {
   const { removeItem } = useContext(CartContext);
 
   return (
-    <div className={`container col-12 form-control ${styles.cart_card}`}>
+    <div className={`container col-12 ${styles.cart_card}`}>
       <img
         src={`/${item.categoryId}/${item.imageId}`}
         alt={item.title}
