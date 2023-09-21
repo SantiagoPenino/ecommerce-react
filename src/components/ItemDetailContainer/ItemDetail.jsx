@@ -26,11 +26,13 @@ const ItemDetail = ({ item, isLoading }) => {
       </div>
     );
   const [quantityAdded, setQuantityAdded] = useState(0);
+  const [newStock, setNewStock] = useState(item.stock);
 
   const { addItem } = useContext(CartContext);
   const handleOnAdd = (quantity) => {
     setQuantityAdded(quantity);
     addItem(item, quantity);
+    setNewStock(item.stock - quantity);
     notify();
   };
 
@@ -47,11 +49,11 @@ const ItemDetail = ({ item, isLoading }) => {
       <div className={`card-body ${styles.product_details}`}>
         <h1 className="card-title">{item.title}</h1>
         <p className="card-text fw-bold">Descripcion de {item.title}</p>
-        {item.stock === 0 ? (
+        {newStock === 0 ? (
           <p className={`card-text ${styles.no_stock}`}>Sin stock!</p>
         ) : (
           <p className={`card-text ${styles.stocked}`}>
-            En stock ({item.stock} disponibles)
+            En stock ({newStock} disponibles)
           </p>
         )}
         <p className="card-text text-danger fw-bold fs-1">${item.price}</p>
