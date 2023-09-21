@@ -57,5 +57,4 @@ Si el producto en el que nos encontramos no cuenta con stock, el botón de agreg
 ### CartContext
 Es el componente de contexto, contiene los productos que agreguemos al cart y una serie de funcionalidades relacionadas.
 
-Puedes ver un deploy del proyecto en Netlify
 [![Netlify Status](https://api.netlify.com/api/v1/badges/ed970802-a086-410f-8470-ec6c1f478539/deploy-status)](https://pac-store.netlify.app/)
