@@ -5,21 +5,23 @@ import ItemDetail from "./ItemDetail";
 
 const ItemDetailContainer = () => {
   const [item, setItem] = useState({});
-  const [isLoading,setIsLoading] = useState(true);
-  const {id} = useParams();
+  const [isLoading, setIsLoading] = useState(true);
+  const { id } = useParams();
 
-  //HOOKS PARA OBTENER POR ID EL PRODUCTO SELECCIONADO
   useEffect(() => {
-    getProduct(id).then((response) => {
-      setItem(response);
-    }).catch(()=>{
-      setItem(null);
-    }).finally(() => {
-      setIsLoading(false);
-    });
+    getProduct(id)
+      .then((response) => {
+        setItem(response);
+      })
+      .catch(() => {
+        setItem(null);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, [id]);
 
-  return <ItemDetail item={item} isLoading={isLoading}/>;
+  return <ItemDetail item={item} isLoading={isLoading} />;
 };
 
 export default ItemDetailContainer;

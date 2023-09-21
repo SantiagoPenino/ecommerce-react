@@ -8,15 +8,16 @@ const ItemListContainer = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { categoryId } = useParams();
 
-  //HOOKS PARA MOSTRAR TODOS LOS PRODUCTOS SEGUN CATEGORIA
   useEffect(() => {
     setIsLoading(true);
-    getProducts(categoryId).then((response) => {
-      setItems(response);
-      setIsLoading(false);
-    }).catch(() => {
-      console.error('algo salio mal')
-    })
+    getProducts(categoryId)
+      .then((response) => {
+        setItems(response);
+        setIsLoading(false);
+      })
+      .catch(() => {
+        console.error("algo salio mal");
+      });
   }, [categoryId]);
 
   return <ItemList items={items} isLoading={isLoading} />;

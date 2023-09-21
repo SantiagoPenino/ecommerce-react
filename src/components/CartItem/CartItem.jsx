@@ -17,7 +17,7 @@ const CartItem = (item) => {
       <p className={styles.cart_details}>${item.price}</p>
       <p className={styles.cart_details}>x {item.quantity}</p>
       <motion.button
-      whileHover={{scale:1.1}}
+        whileHover={{ scale: 1.1 }}
         onClick={() => removeItem(item.id)}
         className={`btn btn-danger ${styles.cart_remove}`}
       >

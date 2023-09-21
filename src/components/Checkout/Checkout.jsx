@@ -3,17 +3,27 @@ import { CartContext } from "../../context/CartContext";
 import { serverTimestamp } from "firebase/firestore";
 import { createOrder } from "../../back";
 import Field from "../Field/Field";
+import { PacmanLoader } from "react-spinners";
 import { doc, getFirestore, updateDoc } from "firebase/firestore";
 import styles from "./Checkout.module.css";
 
 const Checkout = () => {
   const { cart, total, clearCart } = useContext(CartContext);
   const [orderId, setOrderId] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [formState, setFormState] = useState({
     name: "",
     phone: "",
     email: "",
   });
+
+  if (isLoading) {
+    return (
+      <div className="loader">
+        <PacmanLoader color="#ffc107" size={50} />
+      </div>
+    );
+  }
 
   const cartOrder = (cart) => {
     return cart.map((item) => ({
@@ -48,8 +58,10 @@ const Checkout = () => {
       total,
       date: serverTimestamp(),
     };
+    setIsLoading(true);
     createOrder(order).then((docRef) => {
       setOrderId(docRef.id);
+      setIsLoading(false);
       updateStock(cart);
       clearCart();
     });

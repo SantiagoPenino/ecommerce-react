@@ -48,7 +48,7 @@ const ItemDetail = ({ item, isLoading }) => {
       </motion.div>
       <div className={`card-body ${styles.product_details}`}>
         <h1 className="card-title">{item.title}</h1>
-        <p className="card-text fw-bold">Descripcion de {item.title}</p>
+        <p className="card-text fw-bold">Descripción de {item.title}</p>
         {newStock === 0 ? (
           <p className={`card-text ${styles.no_stock}`}>Sin stock!</p>
         ) : (

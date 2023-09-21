@@ -12,7 +12,7 @@ const Cart = () => {
     return (
       <div className={`container ${styles.cart_body}`}>
         <h1 className={styles.empty_cart_title}>
-          Ups! el carrito de compras esta vacio.
+          Ups! el carrito de compras esta vacío.
         </h1>
         <Link to="/" className="btn btn-warning">
           Ir al Inicio

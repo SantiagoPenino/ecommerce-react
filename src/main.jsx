@@ -5,7 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import { initializeApp } from "firebase/app";
 import App from "./App.jsx";
 import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import "./index.css";
 
 const firebaseConfig = {
